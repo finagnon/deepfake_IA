@@ -1,0 +1,30 @@
+{% load static %}
+<div class="container mt-4">
+    <div class="row">
+        <!-- Colonne de gauche (image) -->
+        <div class="col-md-6 order-md-1">
+            <!-- Ajoutez la classe order-md-2 pour inverser l'ordre des colonnes sur les grands écrans -->
+            <img src="{% static '/img/img1.jpg' %}" alt="Image" class="img-fluid w-100 h-80">
+            <!-- Utilisez w-100 et h-100 pour définir la largeur et la hauteur de l'image à 100% -->
+        </div>
+        <!-- Colonne de droite (formulaire) -->
+        <div class="col-md-6 order-md-2">
+            <form>
+                <div class="form-group">
+                    <label for="message">Le Texte à vérifier:</label>
+                    <textarea id="message" class="form-control" rows="4" style="background-color:rgb(221, 219, 223);"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+                 <div class="form-group">
+                    <label for="message"> Resultat d'analyse :</label>
+                    <textarea id="message" class="form-control" rows="4" style="background-color: rgb(221, 219, 223);"> Texte ici </textarea>
+                </div> 
+
+            </form>
+             <div class="mt-3">
+                <!-- Affichage du message -->
+                <p class="p-4 text-white d-flex justify-content-center align-items-center" id="message-affiche" style="background-color: rgb(46, 16, 198); height: 100px;">LA JOIE DE VOIR LA VÉRITÉ JAILLIT</p>
+            </div> 
+        </div>
+    </div>
+</div>
