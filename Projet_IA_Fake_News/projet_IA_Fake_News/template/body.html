@@ -1,4 +1,88 @@
 {% load static %}
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse d'Image</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Colonne de gauche (image) -->
+            <div class="col-md-6 order-md-1">
+                <img id="uploadedImage" src="{% static 'img/img1.jpg' %}" alt="Image" class="img-fluid w-100 h-80">
+            </div>
+            <!-- Colonne de droite (formulaire) -->
+            <div class="col-md-6 order-md-2">
+                <form id="imageForm">
+                    <div class="form-group">
+                        <label for="imageUpload">Téléchargez une image:</label>
+                        <input type="file" id="imageUpload" class="form-control-file" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                    <div class="form-group mt-3">
+                        <label for="result">Résultat d'analyse :</label>
+                        <textarea id="result" class="form-control" rows="4" style="background-color: rgb(221, 219, 223);" disabled>Texte ici</textarea>
+                    </div> 
+                </form>
+                <div class="mt-3">
+                    <p class="p-4 text-white d-flex justify-content-center align-items-center" id="message-affiche" style="background-color: rgb(46, 16, 198); height: 100px;">LA JOIE DE VOIR LA VÉRITÉ JAILLIT</p>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('imageForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const fileInput = document.getElementById('imageUpload');
+                const resultTextarea = document.getElementById('result');
+                const imageElement = document.getElementById('uploadedImage');
+
+                if (fileInput.files && fileInput.files[0]) {
+                    const formData = new FormData();
+                    formData.append('image', fileInput.files[0]);
+
+                    fetch('/upload-image/', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        const result = data.result;
+                        displayResult(resultTextarea, result);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        imageElement.src = e.target.result;
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                } else {
+                    alert("Veuillez télécharger une image.");
+                }
+            });
+
+            function displayResult(textarea, result) {
+                textarea.value = result;
+                textarea.style.fontWeight = 'bold';
+                textarea.style.fontSize = '24px';
+                textarea.style.color = 'yellow';
+                textarea.style.backgroundColor = 'rgb(221, 219, 223)';
+            }
+        });
+    </script>
+</body>
+</html>
+=======
 <div class="container mt-4">
     <div class="row">
         <!-- Colonne de gauche (image) -->
@@ -28,3 +112,4 @@
         </div>
     </div>
 </div>
+>>>>>>> 1409d30141be0c20f2e435566dfc041b20f24adf
