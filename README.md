@@ -1,4 +1,4 @@
-# Groupe2_IA
+# _IA
 
 # r2FERENCE DE LA DATA :
 
